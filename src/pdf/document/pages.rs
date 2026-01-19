@@ -78,6 +78,9 @@ pub struct PdfPages<'a> {
     bindings: &'a dyn PdfiumLibraryBindings,
 }
 
+unsafe impl<'a> Send for PdfPages<'a> {}
+unsafe impl<'a> Sync for PdfPages<'a> {}
+
 impl<'a> PdfPages<'a> {
     #[inline]
     pub(crate) fn from_pdfium(
