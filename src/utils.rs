@@ -356,6 +356,9 @@ pub(crate) mod files {
         }
     }
 
+    unsafe impl<'a> Send for FpdfFileAccessExt<'a> {}
+    unsafe impl<'a> Sync for FpdfFileAccessExt<'a> {}
+
     // The callback function invoked by Pdfium.
     pub(crate) extern "C" fn read_block_from_callback(
         file_access_ptr: *mut FpdfFileAccessExt,
