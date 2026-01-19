@@ -2875,6 +2875,10 @@ pub struct _FPDF_FORMFILLINFO {
         ),
     >,
 }
+
+unsafe impl Send for _FPDF_FORMFILLINFO {}
+unsafe impl Sync for _FPDF_FORMFILLINFO {}
+
 pub type FPDF_FORMFILLINFO = _FPDF_FORMFILLINFO;
 unsafe extern "C" {
     #[doc = " Function: FPDFDOC_InitFormFillEnvironment\n       Initialize form fill environment.\n Parameters:\n       document        -   Handle to document from FPDF_LoadDocument().\n       formInfo        -   Pointer to a FPDF_FORMFILLINFO structure.\n Return Value:\n       Handle to the form fill module, or NULL on failure.\n Comments:\n       This function should be called before any form fill operation.\n       The FPDF_FORMFILLINFO passed in via |formInfo| must remain valid until\n       the returned FPDF_FORMHANDLE is closed."]
