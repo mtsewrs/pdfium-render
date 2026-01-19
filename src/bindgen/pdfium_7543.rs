@@ -490,8 +490,6 @@ pub type FPDF_DEST = *mut fpdf_dest_t__;
 pub struct fpdf_document_t__ {
     _unused: [u8; 0],
 }
-unsafe impl Send for fpdf_document_t__ {}
-unsafe impl Sync for fpdf_document_t__ {}
 pub type FPDF_DOCUMENT = *mut fpdf_document_t__;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -601,8 +599,6 @@ pub type FPDF_STRUCTTREE = *mut fpdf_structtree_t__;
 pub struct fpdf_textpage_t__ {
     _unused: [u8; 0],
 }
-unsafe impl Send for fpdf_textpage_t__ {}
-unsafe impl Sync for fpdf_textpage_t__ {}
 pub type FPDF_TEXTPAGE = *mut fpdf_textpage_t__;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2879,9 +2875,6 @@ pub struct _FPDF_FORMFILLINFO {
         ),
     >,
 }
-
-unsafe impl Send for _FPDF_FORMFILLINFO {}
-unsafe impl Sync for _FPDF_FORMFILLINFO {}
 
 pub type FPDF_FORMFILLINFO = _FPDF_FORMFILLINFO;
 unsafe extern "C" {
