@@ -269,7 +269,7 @@ impl Pdfium {
     /// * Embed the bytes of the target document directly into the compiled WASM module
     ///   using the `include_bytes!` macro.
     #[cfg(not(target_arch = "wasm32"))]
-    pub fn load_pdf_from_reader<'a, R: Read + Seek + 'a>(
+    pub fn load_pdf_from_reader<'a, R: Send + Read + Seek + 'a>(
         &'a self,
         reader: R,
         password: Option<&'a str>,

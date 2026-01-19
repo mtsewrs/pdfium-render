@@ -162,7 +162,7 @@ impl<'a> PdfPageImageObject<'a> {
     ///
     /// This function is not available when compiling to WASM.
     #[cfg(not(target_arch = "wasm32"))]
-    pub fn new_from_jpeg_reader<R: Read + Seek>(
+    pub fn new_from_jpeg_reader<R: Send + Read + Seek>(
         document: &PdfDocument<'a>,
         reader: R,
     ) -> Result<Self, PdfiumError> {

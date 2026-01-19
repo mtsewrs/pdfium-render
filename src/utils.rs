@@ -295,7 +295,7 @@ pub(crate) mod files {
     /// the `Read` trait.
     #[cfg_attr(target_arch = "wasm32", allow(dead_code))]
     // This function is never used when compiling to WASM.
-    pub(crate) fn get_pdfium_file_accessor_from_reader<'a, R: Read + Seek + 'a>(
+    pub(crate) fn get_pdfium_file_accessor_from_reader<'a, R: Send + Read + Seek + 'a>(
         mut reader: R,
     ) -> Box<FpdfFileAccessExt<'a>> {
         let content_length = reader.seek(SeekFrom::End(0)).unwrap_or(0) as c_ulong;
@@ -318,14 +318,14 @@ pub(crate) mod files {
         result
     }
 
-    trait PdfiumDocumentReader: Read + Seek {
+    trait PdfiumDocumentReader: Send + Read + Seek {
         // A tiny trait that lets us perform type-erasure on the user-provided Rust reader.
         // This means FpdfFileAccessExt does not need to carry a generic parameter, which in turn
         // means that any PdfDocument containing a bound FpdfFileAccessExt does not need to carry
         // a generic parameter either.
     }
 
-    impl<R: Read + Seek> PdfiumDocumentReader for R {}
+    impl<R: Send + Read + Seek> PdfiumDocumentReader for R {}
 
     #[repr(C)]
     pub(crate) struct FpdfFileAccessExt<'a> {
