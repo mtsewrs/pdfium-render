@@ -103,6 +103,9 @@ pub struct PdfFont<'a> {
     is_font_memory_loaded: bool,
 }
 
+unsafe impl<'a> Send for PdfFont<'a> {}
+unsafe impl<'a> Sync for PdfFont<'a> {}
+
 impl<'a> PdfFont<'a> {
     #[inline]
     pub(crate) fn from_pdfium(
