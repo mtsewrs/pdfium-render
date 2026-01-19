@@ -98,6 +98,9 @@ pub enum PdfFormField<'a> {
     Unknown(PdfFormUnknownField<'a>),
 }
 
+unsafe impl<'a> Send for PdfFormField<'a> {}
+unsafe impl<'a> Sync for PdfFormField<'a> {}
+
 impl<'a> PdfFormField<'a> {
     pub(crate) fn from_pdfium(
         form_handle: FPDF_FORMHANDLE,

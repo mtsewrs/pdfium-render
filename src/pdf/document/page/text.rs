@@ -48,6 +48,9 @@ pub struct PdfPageText<'a> {
     bindings: &'a dyn PdfiumLibraryBindings,
 }
 
+unsafe impl<'a> Send for PdfPageText<'a> {}
+unsafe impl<'a> Sync for PdfPageText<'a> {}
+
 impl<'a> PdfPageText<'a> {
     pub(crate) fn from_pdfium(
         text_page_handle: FPDF_TEXTPAGE,

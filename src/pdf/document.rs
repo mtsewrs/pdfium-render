@@ -171,6 +171,9 @@ pub struct PdfDocument<'a> {
     file_access_reader: Option<Box<FpdfFileAccessExt<'a>>>,
 }
 
+unsafe impl<'a> Send for PdfDocument<'a> {}
+unsafe impl<'a> Sync for PdfDocument<'a> {}
+
 impl<'a> PdfDocument<'a> {
     #[inline]
     pub(crate) fn from_pdfium(

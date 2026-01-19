@@ -135,7 +135,6 @@ fn build_bindings_for_one_pdfium_release(release: &str) -> Result<(), BuildError
         let bindings = bindgen::Builder::default()
             // The input header we would like to generate bindings for.
             .header(format!("include/{}/rust-import-wrapper.h", release))
-            .derive_default(true)
             .clang_arg("-DPDF_USE_SKIA") // Also generate bindings for optional SKIA functions
             .clang_arg("-D_SKIA_SUPPORT_") // (Alternative name for this setting in Pdfium 5961 and earlier)
             .clang_arg("-DPDF_ENABLE_XFA") // Also generate bindings for optional XFA functions

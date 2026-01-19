@@ -78,9 +78,7 @@ pub use crate::bindgen::FPDF_SKIA_CANVAS;
 #[cfg(feature = "pdfium_enable_xfa")]
 pub use crate::bindgen::{FPDF_BSTR, FPDF_RESULT};
 
-use crate::bindgen::{
-    fpdf_document_t__, fpdf_form_handle_t__, fpdf_textpage_t__, size_t, _FPDF_FORMFILLINFO,
-};
+use crate::bindgen::{size_t, _FPDF_FORMFILLINFO};
 use crate::bindings::version::PdfiumApiVersion;
 use crate::error::{PdfiumError, PdfiumInternalError};
 use crate::pdf::bitmap::PdfBitmap;
@@ -104,12 +102,6 @@ use std::os::raw::{
 
 unsafe impl Send for _FPDF_FORMFILLINFO {}
 unsafe impl Sync for _FPDF_FORMFILLINFO {}
-unsafe impl Send for fpdf_document_t__ {}
-unsafe impl Sync for fpdf_document_t__ {}
-unsafe impl Send for fpdf_textpage_t__ {}
-unsafe impl Sync for fpdf_textpage_t__ {}
-unsafe impl Send for fpdf_form_handle_t__ {}
-unsafe impl Sync for fpdf_form_handle_t__ {}
 
 /// Platform-independent function bindings to an external Pdfium library.
 /// On most platforms this will be an external shared library loaded dynamically
