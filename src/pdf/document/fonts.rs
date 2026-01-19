@@ -81,6 +81,9 @@ impl PdfFontBuiltin {
 #[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
 pub struct PdfFontToken(FPDF_FONT);
 
+unsafe impl Send for PdfFontToken {}
+unsafe impl Sync for PdfFontToken {}
+
 impl PdfFontToken {
     #[inline]
     pub(crate) fn from_pdfium(handle: FPDF_FONT) -> Self {
