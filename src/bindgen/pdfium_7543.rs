@@ -1454,7 +1454,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Experimental API.\n Get the transform matrix of a page object.\n\n   page_object - handle to a page object.\n   matrix      - pointer to struct to receive the matrix value.\n\n The matrix is composed as:\n   |a c e|\n   |b d f|\n and used to scale, rotate, shear and translate the page object.\n\n For page objects outside form objects, the matrix values are relative to the\n page that contains it.\n For page objects inside form objects, the matrix values are relative to the\n form that contains it.\n\n Returns TRUE on success."]
     pub fn FPDFPageObj_GetMatrix(page_object: FPDF_PAGEOBJECT, matrix: *mut FS_MATRIX)
-    -> FPDF_BOOL;
+        -> FPDF_BOOL;
 }
 unsafe extern "C" {
     #[doc = " Experimental API.\n Set the transform matrix of a page object.\n\n   page_object - handle to a page object.\n   matrix      - pointer to struct with the matrix value.\n\n The matrix is composed as:\n   |a c e|\n   |b d f|\n and can be used to scale, rotate, shear and translate the page object.\n\n Returns TRUE on success."]
@@ -1693,7 +1693,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Get the number of filters (i.e. decoders) of the image in |image_object|.\n\n   image_object - handle to an image object.\n\n Returns the number of |image_object|'s filters."]
     pub fn FPDFImageObj_GetImageFilterCount(image_object: FPDF_PAGEOBJECT)
-    -> ::std::os::raw::c_int;
+        -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
     #[doc = " Get the filter at |index| of |image_object|'s list of filters. Note that the\n filters need to be applied in order, i.e. the first filter should be applied\n first, then the second, etc. |buffer| is only modified if |buflen| is longer\n than the length of the filter string.\n\n   image_object - handle to an image object.\n   index        - the index of the filter requested.\n   buffer       - buffer for holding filter string, encoded in UTF-8.\n   buflen       - length of the buffer.\n\n Returns the length of the filter string."]
@@ -2059,7 +2059,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Experimental API.\n Get the italic angle of a font.\n\n font  - the handle to the font object.\n angle - pointer where the italic angle will be stored\n\n The italic angle of a |font| is defined as degrees counterclockwise\n from vertical. For a font that slopes to the right, this will be negative.\n\n Returns TRUE on success; |angle| unmodified on failure."]
     pub fn FPDFFont_GetItalicAngle(font: FPDF_FONT, angle: *mut ::std::os::raw::c_int)
-    -> FPDF_BOOL;
+        -> FPDF_BOOL;
 }
 unsafe extern "C" {
     #[doc = " Experimental API.\n Get ascent distance of a font.\n\n font       - the handle to the font object.\n font_size  - the size of the |font|.\n ascent     - pointer where the font ascent will be stored\n\n Ascent is the maximum distance in points above the baseline reached by the\n glyphs of the |font|. One point is 1/72 inch (around 0.3528 mm).\n\n Returns TRUE on success; |ascent| unmodified on failure."]
@@ -3443,7 +3443,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Flatten annotations and form fields into the page contents.\n\n   page  - handle to the page.\n   nFlag - One of the |FLAT_*| values denoting the page usage.\n\n Returns one of the |FLATTEN_*| values.\n\n Currently, all failures return |FLATTEN_FAIL| with no indication of the\n cause."]
     pub fn FPDFPage_Flatten(page: FPDF_PAGE, nFlag: ::std::os::raw::c_int)
-    -> ::std::os::raw::c_int;
+        -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
     #[doc = " Experimental API.\n Gets the decoded data from the thumbnail of |page| if it exists.\n This only modifies |buffer| if |buflen| less than or equal to the\n size of the decoded data. Returns the size of the decoded\n data or 0 if thumbnail DNE. Optional, pass null to just retrieve\n the size of the buffer needed.\n\n   page    - handle to a page.\n   buffer  - buffer for holding the decoded image data.\n   buflen  - length of the buffer in bytes."]
@@ -4108,7 +4108,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Experimental API.\n Sets the language of |document| to |language|.\n\n document - handle to a document.\n language - the language to set to.\n\n Returns TRUE on success."]
     pub fn FPDFCatalog_SetLanguage(document: FPDF_DOCUMENT, language: FPDF_BYTESTRING)
-    -> FPDF_BOOL;
+        -> FPDF_BOOL;
 }
 #[doc = " Interface for checking whether sections of the file are available."]
 #[repr(C)]
@@ -4313,7 +4313,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Experimental API.\n Add an embedded file with |name| in |document|. If |name| is empty, or if\n |name| is the name of a existing embedded file in |document|, or if\n |document|'s embedded file name tree is too deep (i.e. |document| has too\n many embedded files already), then a new attachment will not be added.\n\n   document - handle to a document.\n   name     - name of the new attachment.\n\n Returns a handle to the new attachment object, or NULL on failure."]
     pub fn FPDFDoc_AddAttachment(document: FPDF_DOCUMENT, name: FPDF_WIDESTRING)
-    -> FPDF_ATTACHMENT;
+        -> FPDF_ATTACHMENT;
 }
 unsafe extern "C" {
     #[doc = " Experimental API.\n Get the embedded attachment at |index| in |document|. Note that the returned\n attachment handle is only valid while |document| is open.\n\n   document - handle to a document.\n   index    - the index of the requested embedded file.\n\n Returns the handle to the attachment object, or NULL on failure."]
@@ -4416,7 +4416,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Experimental API.\n Get the index of |annot| in |page|. This is the opposite of\n FPDFPage_GetAnnot().\n\n   page  - handle to the page that the annotation is on.\n   annot - handle to an annotation.\n\n Returns the index of |annot|, or -1 on failure."]
     pub fn FPDFPage_GetAnnotIndex(page: FPDF_PAGE, annot: FPDF_ANNOTATION)
-    -> ::std::os::raw::c_int;
+        -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
     #[doc = " Experimental API.\n Close an annotation. Must be called when the annotation returned by\n FPDFPage_CreateAnnot() or FPDFPage_GetAnnot() is no longer needed. This\n function does not remove the annotation from the document.\n\n   annot  - handle to an annotation."]
@@ -4597,7 +4597,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Experimental API.\n Get the type of the value corresponding to |key| in |annot|'s dictionary.\n\n   annot  - handle to an annotation.\n   key    - the key to look for, encoded in UTF-8.\n\n Returns the type of the dictionary value."]
     pub fn FPDFAnnot_GetValueType(annot: FPDF_ANNOTATION, key: FPDF_BYTESTRING)
-    -> FPDF_OBJECT_TYPE;
+        -> FPDF_OBJECT_TYPE;
 }
 unsafe extern "C" {
     #[doc = " Experimental API.\n Set the string value corresponding to |key| in |annot|'s dictionary,\n overwriting the existing value if any. The value type would be\n FPDF_OBJECT_STRING after this function call succeeds.\n\n   annot  - handle to an annotation.\n   key    - the key to the dictionary entry to be set, encoded in UTF-8.\n   value  - the string value to be set, encoded in UTF-16LE.\n\n Returns true if successful."]
@@ -4937,7 +4937,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     #[doc = " Copy the viewer preferences from |src_doc| into |dest_doc|.\n\n   dest_doc - Document to write the viewer preferences into.\n   src_doc  - Document to read the viewer preferences from.\n\n Returns TRUE on success."]
     pub fn FPDF_CopyViewerPreferences(dest_doc: FPDF_DOCUMENT, src_doc: FPDF_DOCUMENT)
-    -> FPDF_BOOL;
+        -> FPDF_BOOL;
 }
 #[doc = " 13 = __LC_LAST."]
 #[repr(C)]

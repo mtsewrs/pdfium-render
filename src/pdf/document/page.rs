@@ -193,6 +193,9 @@ pub struct PdfPage<'a> {
     bindings: &'a dyn PdfiumLibraryBindings,
 }
 
+unsafe impl<'a> Send for PdfPage<'a> {}
+unsafe impl<'a> Sync for PdfPage<'a> {}
+
 impl<'a> PdfPage<'a> {
     /// The default content regeneration strategy used by `pdfium-render`. This can be overridden
     /// on a page-by-page basis using the [PdfPage::set_content_regeneration_strategy()] function.
